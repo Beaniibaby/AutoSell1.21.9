@@ -1,0 +1,38 @@
+{
+  "modmenu.descriptionTranslation.autosell": "Мод для автоматической продажи предметов жителям.",
+
+  "key.category.autosell.main": "AutoSell",
+  "key.autosell.toggle": "Переключить режим работы AutoSell",
+  "key.autosell.toggle_highlight": "Переключить подсветку жителей",
+
+  "modmenu.autosell.settings.title": "Настройки AutoSell",
+
+  "modmenu.autosell.settings.general.title": "Основные",
+
+  "modmenu.autosell.settings.general.enabled.name": "Включён",
+  "modmenu.autosell.settings.general.enabled.hint": "Включает и отключает мод",
+
+  "modmenu.autosell.settings.general.highlight_last_villager.name": "Подсвечивать последнего жителя",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.1": "Последний обработанный модом житель будет испускать частицы",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.2": "Полезно при массовой продаже, чтобы не забыть, на ком вы остановились.",
+
+  "modmenu.autosell.settings.general.trades_delay.name": "Задержка операций",
+  "modmenu.autosell.settings.general.trades_delay.hint.1": "Задержки между операциями в моде (в тиках, от §60§r до §6210§r)",
+  "modmenu.autosell.settings.general.trades_delay.hint.2": "Увеличение задержки может помочь при фантомных сделках или киках за спам.",
+
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.name": "Множитель допустимых цен",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1": "Во сколько раз может увеличиться цена, чтобы она всё ещё считалась допустимой (для режима §aON§r, §eACCEPTABLE PRICES§r)",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.2": "Например, §61.5 = 150%§r. Значит если цена была §64§r изумруда , то §64 * 1.5 = 6§r изумрудов - максимальная допустимая цена.",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.3": "Множитель так же может быть меньше §61§r. Например, если вы захотите покупать предметы только по скидкам.",
+
+  "modmenu.autosell.settings.general.processed_trades.name": "Обрабатываемые сделки",
+  "modmenu.autosell.settings.general.processed_trades.hint.1": "Сделки, которые мод попытается произвести",
+  "modmenu.autosell.settings.general.processed_trades.hint.2": "Примеры формата записей:",
+  "modmenu.autosell.settings.general.processed_trades.hint.3": "    some_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.4": "    first_item + second_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.5": "Названия предметов должны быть внутреигровыми идентификаторами, например §a\"pumpkin\"§r, §a\"minecraft:emerald\"§r или §a\"end_stone_brick_stairs\"§r.",
+  "modmenu.autosell.settings.general.processed_trades.hint.6": "Названия предметов не могут содержать пробелов ( ) и ведущих/завершающих подчёркиваний (§6_§r), но могут содержать цифры (§60-9§r).",
+  "modmenu.autosell.settings.general.processed_trades.hint.7": "Названия предметов могут быть написаны с явным указанием пространства имён, по типу §a\"minecraft:something\"§r.",
+
+  "modmenu.autosell.settings.error.invalid_entry_pattern": "Некорректный формат записи"
+}

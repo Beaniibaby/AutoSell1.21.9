@@ -1,0 +1,38 @@
+{
+  "modmenu.descriptionTranslation.autosell": "Mod to automatically sell items to villagers.",
+
+  "key.category.autosell.main": "AutoSell",
+  "key.autosell.toggle": "Toggle AutoSell mode",
+  "key.autosell.toggle_highlight": "Toggle Villager Highlight",
+
+  "modmenu.autosell.settings.title": "AutoSell Mod Settings",
+
+  "modmenu.autosell.settings.general.title": "General",
+
+  "modmenu.autosell.settings.general.enabled.name": "Enabled",
+  "modmenu.autosell.settings.general.enabled.hint": "Enables and disables the mod",
+
+  "modmenu.autosell.settings.general.highlight_last_villager.name": "Highlight Last Villager",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.1": "Last processed by the mod villager will emit particles",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.2": "Useful for mass sale in order not to forget where have you stopped.",
+
+  "modmenu.autosell.settings.general.trades_delay.name": "Trades Delay",
+  "modmenu.autosell.settings.general.trades_delay.hint.1": "Delays between trade operations (in ticks, from §60§r to §6210§r)",
+  "modmenu.autosell.settings.general.trades_delay.hint.2": "Increasing delays can help if trades occur only visually or if you're getting kicked for spamming.",
+
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.name": "Acceptable Price Multiplier",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1": "How many times can the price increase so that the trade is considered acceptable (for mode §aON§r, §eACCEPTABLE PRICES§r)",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.2": "For example, §61.5 = 150%§r. So if the price was §64§r emeralds, then §64 * 1.5 = 6§r emeralds is the maximum acceptable price.",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.3": "Multiplier can also be less than §61§r. In case if you want to buy things only at a discount.",
+
+  "modmenu.autosell.settings.general.processed_trades.name": "Processed Trades",
+  "modmenu.autosell.settings.general.processed_trades.hint.1": "Trades which will be processed if possible",
+  "modmenu.autosell.settings.general.processed_trades.hint.2": "Entries format examples:",
+  "modmenu.autosell.settings.general.processed_trades.hint.3": "    some_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.4": "    first_item + second_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.5": "Item names must be in-game identifiers, like §a\"pumpkin\"§r, §a\"minecraft:emerald\"§r or §a\"end_stone_brick_stairs\"§r.",
+  "modmenu.autosell.settings.general.processed_trades.hint.6": "Item names can't contain spaces ( ) and leading/trailing underscores (§6_§r), but they can contain digits (§60-9§r).",
+  "modmenu.autosell.settings.general.processed_trades.hint.7": "Item names can be written with explicit namespaces like §a\"minecraft:something\"§r.",
+
+  "modmenu.autosell.settings.error.invalid_entry_pattern": "Invalid entry pattern"
+}

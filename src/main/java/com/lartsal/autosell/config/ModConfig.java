@@ -1,0 +1,22 @@
+package com.lartsal.autosell.config;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+public class ModConfig {
+    public static final Pattern TRADES_ENTRY_PATTERN = Pattern.compile("^\\s*(?:([^\\W_]+(?:_[^\\W_]+)*):)?([^\\W_]+(?:_[^\\W_]+)*)(?:\\s*\\+\\s*(?:([^\\W_]+(?:_[^\\W_]+)*):)?([^\\W_]+(?:_[^\\W_]+)*))?\\s*=>\\s*(?:([^\\W_]+(?:_[^\\W_]+)*):)?([^\\W_]+(?:_[^\\W_]+)*)\\s*$");
+
+    public boolean isModEnabled = true;
+    public boolean isVillagerHighlightingEnabled = true;
+    public int tradesDelay = 1;     // In ticks
+    public double acceptablePriceMultiplier = 1.5;
+    public List<String> trades = new ArrayList<>(List.of(
+            "pumpkin => emerald",
+            "melon => emerald"
+    ));
+
+    public boolean isValidTradeEntry(String entry) {
+        return TRADES_ENTRY_PATTERN.matcher(entry).matches();
+    }
+}
