@@ -7,6 +7,7 @@
 
   "modmenu.autosell.settings.title": "Настройки AutoSell",
 
+
   "modmenu.autosell.settings.general.title": "Основные",
 
   "modmenu.autosell.settings.general.enabled.name": "Включён",
@@ -34,7 +35,9 @@
   "modmenu.autosell.settings.general.processed_trades.hint.6": "Названия предметов не могут содержать пробелов ( ) и ведущих/завершающих подчёркиваний (§6_§r), но могут содержать цифры (§60-9§r).",
   "modmenu.autosell.settings.general.processed_trades.hint.7": "Названия предметов могут быть написаны с явным указанием пространства имён, по типу §a\"minecraft:something\"§r.",
 
-  "modmenu.autosell.settings.error.invalid_entry_pattern": "Некорректный формат записи"
+  "modmenu.autosell.settings.general.processed_trades.add_button.hint": "Добавить запись",
+  "modmenu.autosell.settings.general.processed_trades.remove_button.hint": "Удалить запись",
+  "modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern": "Некорректный формат записи!",
 
 
   "modmenu.autosell.settings.effects.title": "Эффекты",

@@ -7,6 +7,7 @@
 
   "modmenu.autosell.settings.title": "AutoSell Mod Settings",
 
+
   "modmenu.autosell.settings.general.title": "General",
 
   "modmenu.autosell.settings.general.enabled.name": "Enabled",
@@ -34,7 +35,9 @@
   "modmenu.autosell.settings.general.processed_trades.hint.6": "Item names can't contain spaces ( ) and leading/trailing underscores (§6_§r), but they can contain digits (§60-9§r).",
   "modmenu.autosell.settings.general.processed_trades.hint.7": "Item names can be written with explicit namespaces like §a\"minecraft:something\"§r.",
 
-  "modmenu.autosell.settings.error.invalid_entry_pattern": "Invalid entry pattern"
+  "modmenu.autosell.settings.general.processed_trades.add_button.hint": "Add entry",
+  "modmenu.autosell.settings.general.processed_trades.remove_button.hint": "Delete entry",
+  "modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern": "Invalid entry pattern!",
 
 
   "modmenu.autosell.settings.effects.title": "Effects",

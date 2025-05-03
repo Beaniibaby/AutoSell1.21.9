@@ -93,6 +93,8 @@ public class ModMenuIntegration implements ModMenuApi {
                                 Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.5"),
                                 Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.6"),
                                 Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.7"))
+                    .setAddButtonTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.add_button.hint"))
+                    .setRemoveButtonTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.remove_button.hint"))
                     .setCreateNewInstance(entry -> new StringListListEntry.StringListCell("_ + _ => _", entry))
                     .setCellErrorSupplier(entry -> {
                         if (!ModConfig.isValidTradeEntry(entry)) {
