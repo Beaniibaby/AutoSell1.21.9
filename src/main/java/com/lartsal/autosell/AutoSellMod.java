@@ -175,6 +175,10 @@ public class AutoSellMod implements ClientModInitializer {
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (highlightingEnabled && lastTradedVillager != null) {
+                if (client.isPaused()) {
+                    return;
+                }
+
                 if (particleSpawnCooldown > 0) {
                     particleSpawnCooldown--;
                     return;
