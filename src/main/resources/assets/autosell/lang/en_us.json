@@ -32,7 +32,7 @@
   "modmenu.autosell.settings.general.processed_trades.hint.3": "    some_item => result_item",
   "modmenu.autosell.settings.general.processed_trades.hint.4": "    first_item + second_item => result_item",
   "modmenu.autosell.settings.general.processed_trades.hint.5": "Item names must be in-game identifiers, like §a\"pumpkin\"§r, §a\"minecraft:emerald\"§r or §a\"end_stone_brick_stairs\"§r.",
-  "modmenu.autosell.settings.general.processed_trades.hint.6": "Item names can't contain spaces ( ) and leading/trailing underscores (§6_§r), but they can contain digits (§60-9§r).",
+  "modmenu.autosell.settings.general.processed_trades.hint.6": "Item names can't contain spaces ( ), but they can contain digits (§60-9§r).",
   "modmenu.autosell.settings.general.processed_trades.hint.7": "Item names can be written with explicit namespaces like §a\"minecraft:something\"§r.",
 
   "modmenu.autosell.settings.general.processed_trades.add_button.hint": "Add entry",
