@@ -1,5 +1,6 @@
 package com.lartsal.autosell.modmenu;
 
+import com.lartsal.autosell.Utils;
 import com.lartsal.autosell.config.ConfigManager;
 import com.lartsal.autosell.config.ModConfig;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
@@ -24,8 +25,10 @@ public class ModMenuIntegration implements ModMenuApi {
                     .setParentScreen(parent)
                     .setTitle(Text.translatable("modmenu.autosell.settings.title"));
 
-            ConfigCategory general = builder.getOrCreateCategory(Text.translatable("modmenu.autosell.settings.general.title"));
             ConfigEntryBuilder entryBuilder = builder.entryBuilder();
+
+            // ==================== GENERAL ====================
+            ConfigCategory general = builder.getOrCreateCategory(Text.translatable("modmenu.autosell.settings.general.title"));
 
             // isModEnabled
             general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.general.enabled.name"), config.isModEnabled)
@@ -103,6 +106,26 @@ public class ModMenuIntegration implements ModMenuApi {
                                 .toList();
                         applyConfig(config);
                     })
+                    .build());
+
+            // ==================== EFFECTS ====================
+            ConfigCategory effects = builder.getOrCreateCategory(Text.translatable("modmenu.autosell.settings.effects.title"));
+
+            // highlightingParticles
+            effects.addEntry(entryBuilder.startStringDropdownMenu(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.name"), config.highlightingParticlesId)
+                    .setDefaultValue("minecraft:witch")
+                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.hint"))
+                    .setErrorSupplier(particleName -> {
+                        if (!ModConfig.isValidParticle(particleName)) {
+                            return Optional.of(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name"));
+                        }
+                        return Optional.empty();
+                    })
+                    .setSaveConsumer(newValue -> {
+                        config.highlightingParticlesId = newValue;
+                        applyConfig(config);
+                    })
+                    .setSelections(Utils.getSimpleParticleIds())
                     .build());
 
             builder.setSavingRunnable(ConfigManager::saveConfig);

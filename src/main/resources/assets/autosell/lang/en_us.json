@@ -35,4 +35,11 @@
   "modmenu.autosell.settings.general.processed_trades.hint.7": "Item names can be written with explicit namespaces like §a\"minecraft:something\"§r.",
 
   "modmenu.autosell.settings.error.invalid_entry_pattern": "Invalid entry pattern"
+
+
+  "modmenu.autosell.settings.effects.title": "Effects",
+
+  "modmenu.autosell.settings.effects.highlighting_particles.name": "Particles Type",
+  "modmenu.autosell.settings.effects.highlighting_particles.hint": "What particles to use for villager highlighting",
+  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Invalid particle name!"
 }

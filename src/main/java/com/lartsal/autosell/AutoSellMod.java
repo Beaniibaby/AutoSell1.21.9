@@ -15,7 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.c2s.play.SelectMerchantTradeC2SPacket;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.MerchantScreenHandler;
 import net.minecraft.screen.slot.SlotActionType;
@@ -92,6 +92,7 @@ public class AutoSellMod implements ClientModInitializer {
 
     private static boolean enabled;
     private static boolean highlightingEnabled;
+    private static SimpleParticleType highlightingParticles;
     private static int tradesDelay;
     private static double acceptablePriceMultiplier;
     private static final List<Trade> trades = new ArrayList<>();
@@ -108,6 +109,7 @@ public class AutoSellMod implements ClientModInitializer {
 
         enabled = config.isModEnabled;
         highlightingEnabled = config.isVillagerHighlightingEnabled;
+        highlightingParticles = (SimpleParticleType) Registries.PARTICLE_TYPE.get(Identifier.of(config.highlightingParticlesId));
         tradesDelay = config.tradesDelay;
         acceptablePriceMultiplier = config.acceptablePriceMultiplier;
 
@@ -185,7 +187,7 @@ public class AutoSellMod implements ClientModInitializer {
                 }
 
                 client.world.addParticle(
-                        ParticleTypes.WITCH,
+                        highlightingParticles,
                         lastTradedVillager.getX(),
                         lastTradedVillager.getY() + 1.25,
                         lastTradedVillager.getZ(),
