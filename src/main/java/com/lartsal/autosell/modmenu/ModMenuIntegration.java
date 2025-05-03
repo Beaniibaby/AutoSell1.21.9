@@ -95,14 +95,14 @@ public class ModMenuIntegration implements ModMenuApi {
                                 Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.7"))
                     .setCreateNewInstance(entry -> new StringListListEntry.StringListCell("_ + _ => _", entry))
                     .setCellErrorSupplier(entry -> {
-                        if (!config.isValidTradeEntry(entry)) {
-                            return Optional.of(Text.translatable("modmenu.autosell.settings.error.invalid_entry_pattern"));
+                        if (!ModConfig.isValidTradeEntry(entry)) {
+                            return Optional.of(Text.translatable("modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern"));
                         }
                         return Optional.empty();
                     })
                     .setSaveConsumer(newList -> {
                         config.trades = newList.stream()
-                                .filter(config::isValidTradeEntry)
+                                .filter(ModConfig::isValidTradeEntry)
                                 .toList();
                         applyConfig(config);
                     })

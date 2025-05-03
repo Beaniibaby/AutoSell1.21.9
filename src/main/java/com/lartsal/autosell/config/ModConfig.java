@@ -21,7 +21,6 @@ public class ModConfig {
             "melon => emerald"
     ));
 
-    public boolean isValidTradeEntry(String entry) {
     public static boolean isValidParticle(String particleName) {
         try {
             return Registries.PARTICLE_TYPE.containsId(Identifier.of(particleName));
@@ -30,6 +29,7 @@ public class ModConfig {
         }
     }
 
+    public static boolean isValidTradeEntry(String entry) {
         return TRADES_ENTRY_PATTERN.matcher(entry).matches();
     }
 }
