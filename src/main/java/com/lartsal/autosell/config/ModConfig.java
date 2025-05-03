@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class ModConfig {
-    public static final Pattern TRADES_ENTRY_PATTERN = Pattern.compile("^\\s*(?:([^\\W_]+(?:_[^\\W_]+)*):)?([^\\W_]+(?:_[^\\W_]+)*)(?:\\s*\\+\\s*(?:([^\\W_]+(?:_[^\\W_]+)*):)?([^\\W_]+(?:_[^\\W_]+)*))?\\s*=>\\s*(?:([^\\W_]+(?:_[^\\W_]+)*):)?([^\\W_]+(?:_[^\\W_]+)*)\\s*$");
+    public static final Pattern TRADES_ENTRY_PATTERN = Pattern.compile("^\\s*(?:([a-z0-9_.-]+):)?([a-z0-9/._-]+)(?:\\s*\\+\\s*(?:([a-z0-9_.-]+):)?([a-z0-9/._-]+))?\\s*=>\\s*(?:([a-z0-9_.-]+):)?([a-z0-9/._-]+)\\s*$");
 
     public boolean isModEnabled = true;
     public boolean isVillagerHighlightingEnabled = true;
