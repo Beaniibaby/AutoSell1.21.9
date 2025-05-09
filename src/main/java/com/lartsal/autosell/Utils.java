@@ -13,6 +13,13 @@ public class Utils {
         return random.nextBoolean() ? 1 : -1;
     }
 
+    public static double getRandomDouble(double max) {
+        if (max <= 0) {
+            return 0;
+        }
+        return random.nextDouble(max);
+    }
+
     public static List<String> getSimpleParticleIds() {
         return Registries.PARTICLE_TYPE.stream()
                 .filter(particleType -> particleType instanceof SimpleParticleType)

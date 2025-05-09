@@ -230,9 +230,9 @@ public class AutoSellMod implements ClientModInitializer {
                         double offsetY = p.y;
                         double offsetZ = p.z;
 
-                        double finalSpeedX = Utils.getRandomSign() * (randomSpeed ? (speedX <= 0 ? speedX : random.nextDouble(speedX)) : speedX);
-                        double finalSpeedY = Utils.getRandomSign() * (randomSpeed ? (speedY <= 0 ? speedY : random.nextDouble(speedY)) : speedY);
-                        double finalSpeedZ = Utils.getRandomSign() * (randomSpeed ? (speedZ <= 0 ? speedZ : random.nextDouble(speedZ)) : speedZ);
+                        double finalSpeedX = Utils.getRandomSign() * (randomSpeed ? Utils.getRandomDouble(speedX) : speedX);
+                        double finalSpeedY = Utils.getRandomSign() * (randomSpeed ? Utils.getRandomDouble(speedY) : speedY);
+                        double finalSpeedZ = Utils.getRandomSign() * (randomSpeed ? Utils.getRandomDouble(speedZ) : speedZ);
 
                         client.world.addParticle(
                                 highlightingParticles,                          // minecraft:witch
@@ -470,21 +470,21 @@ public class AutoSellMod implements ClientModInitializer {
         double Sz = 2 * radiusX * radiusY;
         double Stotal = Sx + Sy + Sz;
 
-        double u = random.nextDouble(Stotal);
+        double u = Utils.getRandomDouble(Stotal);
 
         double x, y, z;
 
         if (u <= Sx) {
             x = Utils.getRandomSign() * radiusX;
-            y = Utils.getRandomSign() * random.nextDouble(radiusY);
-            z = Utils.getRandomSign() * random.nextDouble(radiusZ);
+            y = Utils.getRandomSign() * Utils.getRandomDouble(radiusY);
+            z = Utils.getRandomSign() * Utils.getRandomDouble(radiusZ);
         } else if (u <= Sx + Sy) {
-            x = Utils.getRandomSign() * random.nextDouble(radiusX);
+            x = Utils.getRandomSign() * Utils.getRandomDouble(radiusX);
             y = Utils.getRandomSign() * radiusY;
-            z = Utils.getRandomSign() * random.nextDouble(radiusZ);
+            z = Utils.getRandomSign() * Utils.getRandomDouble(radiusZ);
         } else {
-            x = Utils.getRandomSign() * random.nextDouble(radiusX);
-            y = Utils.getRandomSign() * random.nextDouble(radiusY);
+            x = Utils.getRandomSign() * Utils.getRandomDouble(radiusX);
+            y = Utils.getRandomSign() * Utils.getRandomDouble(radiusY);
             z = Utils.getRandomSign() * radiusZ;
         }
 
