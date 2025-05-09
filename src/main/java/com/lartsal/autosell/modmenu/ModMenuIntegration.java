@@ -150,15 +150,34 @@ public class ModMenuIntegration implements ModMenuApi {
                 .build());
 
             // Particle Parameters
+            double yLevelMin = -21.0;
+            double yLevelMax = 21.0;
+            double yLevelStep = 0.25;
+            int yLevelDefault = (int) ((1.25 + Math.abs(yLevelMin)) / yLevelStep);
+            int yLevelSliderSteps = (int) ((yLevelMax - yLevelMin) / yLevelStep);
+
+            double radiusMin = 0.0;
+            double radiusMax = 21.0;
+            double radiusStep = 0.25;
+            int radiusDefault = (int) ((0 + Math.abs(radiusMin)) / radiusStep);
+            int radiusSliderSteps = (int) ((radiusMax - radiusMin) / radiusStep);
+
+            double speedMin = 0.0;
+            double speedMax = 2.1;
+            double speedStep = 0.035;
+            int speedDefault = (int) ((0.07 + Math.abs(speedMin)) / speedStep);
+            int speedSliderSteps = (int) ((speedMax - speedMin) / speedStep);
+
             effects.addEntry(entryBuilder.startSubCategory(Text.translatable("modmenu.autosell.settings.effects.particles_parameters.title"), List.of(
                 // yLevel
-                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.y_level.name"), config.yLevel)
-                    .setDefaultValue(1.25)
-                    .setMin(-21.0)
-                    .setMax(21.0)
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.y_level.name"), (int) ((config.yLevel + Math.abs(yLevelMin)) / yLevelStep), 0, yLevelSliderSteps)
+                    .setDefaultValue(yLevelDefault)
+                    .setMin(0)
+                    .setMax(yLevelSliderSteps)
                     .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.y_level.hint"))
+                    .setTextGetter(value -> Text.of(String.format("%.2f", yLevelMin + value * yLevelStep)))
                     .setSaveConsumer(newValue -> {
-                        config.yLevel = newValue;
+                        config.yLevel = yLevelMin + newValue * yLevelStep;
                         applyConfig(config);
                     })
                     .build(),
@@ -175,35 +194,40 @@ public class ModMenuIntegration implements ModMenuApi {
                     .build(),
 
                 // radiusX
-                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.x.name"), config.radiusX)
-                        .setDefaultValue(0.0)
-                        .setMin(0.0)
-                        .setMax(21.0)
-                        .setSaveConsumer(newValue -> {
-                            config.radiusX = newValue;
-                            applyConfig(config);
-                        })
-                        .build(),
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.x.name"), (int) ((config.radiusX + Math.abs(radiusMin)) / radiusStep), 0, radiusSliderSteps)
+                    .setDefaultValue(radiusDefault)
+                    .setMin(0)
+                    .setMax(radiusSliderSteps)
+                    .setTextGetter(value -> Text.of(String.format("%.2f", radiusMin + value * radiusStep)))
+                    .setSaveConsumer(newValue -> {
+                        config.radiusX = radiusMin + newValue * radiusStep;
+                        applyConfig(config);
+                    })
+                    .build(),
+
                 // radiusY
-                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.y.name"), config.radiusY)
-                        .setDefaultValue(0.0)
-                        .setMin(0.0)
-                        .setMax(21.0)
-                        .setSaveConsumer(newValue -> {
-                            config.radiusY = newValue;
-                            applyConfig(config);
-                        })
-                        .build(),
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.y.name"), (int) ((config.radiusY + Math.abs(radiusMin)) / radiusStep), 0, radiusSliderSteps)
+                    .setDefaultValue(radiusDefault)
+                    .setMin(0)
+                    .setMax(radiusSliderSteps)
+                    .setTextGetter(value -> Text.of(String.format("%.2f", radiusMin + value * radiusStep)))
+                    .setSaveConsumer(newValue -> {
+                        config.radiusY = radiusMin + newValue * radiusStep;
+                        applyConfig(config);
+                    })
+                    .build(),
+
                 // radiusZ
-                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.z.name"), config.radiusZ)
-                        .setDefaultValue(0.0)
-                        .setMin(0.0)
-                        .setMax(21.0)
-                        .setSaveConsumer(newValue -> {
-                            config.radiusZ = newValue;
-                            applyConfig(config);
-                        })
-                        .build(),
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.z.name"), (int) ((config.radiusZ + Math.abs(radiusMin)) / radiusStep), 0, radiusSliderSteps)
+                    .setDefaultValue(radiusDefault)
+                    .setMin(0)
+                    .setMax(radiusSliderSteps)
+                    .setTextGetter(value -> Text.of(String.format("%.2f", radiusMin + value * radiusStep)))
+                    .setSaveConsumer(newValue -> {
+                        config.radiusZ = radiusMin + newValue * radiusStep;
+                        applyConfig(config);
+                    })
+                    .build(),
 
                 // randomSpeed
                 entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.random_speed.name"), config.randomSpeed)
@@ -216,42 +240,41 @@ public class ModMenuIntegration implements ModMenuApi {
                     })
                     .build(),
 
-                // speed
-                entryBuilder.startSubCategory(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.name"), List.of(
-                    // speedX
-                    entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.x.name"), config.speedX)
-                        .setDefaultValue(0.07)
-                        .setMin(-2.1)
-                        .setMax(2.1)
-                        .setSaveConsumer(newValue -> {
-                            config.speedX = newValue;
-                            applyConfig(config);
-                        })
-                        .build(),
-                    // speedY
-                    entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.y.name"), config.speedY)
-                        .setDefaultValue(0.07)
-                        .setMin(-2.1)
-                        .setMax(2.1)
-                        .setSaveConsumer(newValue -> {
-                            config.speedY = newValue;
-                            applyConfig(config);
-                        })
-                        .build(),
-                    // speedZ
-                    entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.z.name"), config.speedZ)
-                        .setDefaultValue(0.07)
-                        .setMin(-2.1)
-                        .setMax(2.1)
-                        .setSaveConsumer(newValue -> {
-                            config.speedZ = newValue;
-                            applyConfig(config);
-                        })
-                        .build()
-                ))
-                .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.hint"))
-                .setExpanded(false)
-                .build()
+                // speedX
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.x.name"), (int) ((config.speedX + Math.abs(speedMin)) / speedStep), 0, speedSliderSteps)
+                    .setDefaultValue(speedDefault)
+                    .setMin(0)
+                    .setMax(speedSliderSteps)
+                    .setTextGetter(value -> Text.of(String.format("%.3f", speedMin + value * speedStep)))
+                    .setSaveConsumer(newValue -> {
+                        config.speedX = speedMin + newValue * speedStep;
+                        applyConfig(config);
+                    })
+                    .build(),
+
+                // speedY
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.y.name"), (int) ((config.speedY + Math.abs(speedMin)) / speedStep), 0, speedSliderSteps)
+                    .setDefaultValue(speedDefault)
+                    .setMin(0)
+                    .setMax(speedSliderSteps)
+                    .setTextGetter(value -> Text.of(String.format("%.3f", speedMin + value * speedStep)))
+                    .setSaveConsumer(newValue -> {
+                        config.speedY = speedMin + newValue * speedStep;
+                        applyConfig(config);
+                    })
+                    .build(),
+
+                // speedZ
+                entryBuilder.startIntSlider(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.z.name"), (int) ((config.speedZ + Math.abs(speedMin)) / speedStep), 0, speedSliderSteps)
+                    .setDefaultValue(speedDefault)
+                    .setMin(0)
+                    .setMax(speedSliderSteps)
+                    .setTextGetter(value -> Text.of(String.format("%.3f", speedMin + value * speedStep)))
+                    .setSaveConsumer(newValue -> {
+                        config.speedZ = speedMin + newValue * speedStep;
+                        applyConfig(config);
+                    })
+                    .build()
             ))
             .setExpanded(false)
             .build());
