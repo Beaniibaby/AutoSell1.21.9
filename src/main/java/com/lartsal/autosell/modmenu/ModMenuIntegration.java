@@ -12,7 +12,6 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import me.shedaniel.clothconfig2.gui.entries.StringListListEntry;
 import net.minecraft.text.Text;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,121 +33,121 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // isModEnabled
             general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.general.enabled.name"), config.isModEnabled)
-                    .setDefaultValue(true)
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.general.enabled.hint"))
-                    .setSaveConsumer(newValue -> {
-                        config.isModEnabled = newValue;
-                        applyConfig(config);
-                    })
-                    .build());
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("modmenu.autosell.settings.general.enabled.hint"))
+                .setSaveConsumer(newValue -> {
+                    config.isModEnabled = newValue;
+                    applyConfig(config);
+                })
+                .build());
 
             // isVillagerHighlightEnabled
             general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.name"), config.isVillagerHighlightingEnabled)
-                    .setDefaultValue(true)
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.hint.1"),
-                                Text.literal(" "),
-                                Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.hint.2"))
-                    .setSaveConsumer(newValue -> {
-                        config.isVillagerHighlightingEnabled = newValue;
-                        applyConfig(config);
-                    })
-                    .build());
+                .setDefaultValue(true)
+                .setTooltip(Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.hint.1"),
+                            Text.literal(" "),
+                            Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.hint.2"))
+                .setSaveConsumer(newValue -> {
+                    config.isVillagerHighlightingEnabled = newValue;
+                    applyConfig(config);
+                })
+                .build());
 
             // operationsDelay
             general.addEntry(entryBuilder.startIntField(Text.translatable("modmenu.autosell.settings.general.trades_delay.name"), config.tradesDelay)
-                    .setDefaultValue(1)
-                    .setMin(0)
-                    .setMax(210)
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.general.trades_delay.hint.1"),
-                                Text.literal(" "),
-                                Text.translatable("modmenu.autosell.settings.general.trades_delay.hint.2"))
-                    .setSaveConsumer(newValue -> {
-                        config.tradesDelay = newValue;
-                        applyConfig(config);
-                    })
-                    .build());
+                .setDefaultValue(1)
+                .setMin(0)
+                .setMax(210)
+                .setTooltip(Text.translatable("modmenu.autosell.settings.general.trades_delay.hint.1"),
+                            Text.literal(" "),
+                            Text.translatable("modmenu.autosell.settings.general.trades_delay.hint.2"))
+                .setSaveConsumer(newValue -> {
+                    config.tradesDelay = newValue;
+                    applyConfig(config);
+                })
+                .build());
 
             // acceptablePriceMultiplier
             general.addEntry(entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.name"), config.acceptablePriceMultiplier)
-                    .setDefaultValue(1.5)
-                    .setMin(1.0)
-                    .setMax(210.0)
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1"),
-                                Text.literal(" "),
-                                Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.2"),
-                                Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.3"))
-                    .setSaveConsumer(newValue -> {
-                        config.acceptablePriceMultiplier = newValue;
-                        applyConfig(config);
-                    })
-                    .build());
+                .setDefaultValue(1.5)
+                .setMin(1.0)
+                .setMax(210.0)
+                .setTooltip(Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1"),
+                            Text.literal(" "),
+                            Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.2"),
+                            Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.3"))
+                .setSaveConsumer(newValue -> {
+                    config.acceptablePriceMultiplier = newValue;
+                    applyConfig(config);
+                })
+                .build());
 
             // trades
             general.addEntry(entryBuilder.startStrList(Text.translatable("modmenu.autosell.settings.general.processed_trades.name"), config.trades)
-                    .setDefaultValue(List.of(
-                            "pumpkin => emerald",
-                            "melon => emerald"
-                    ))
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.1"),
-                                Text.literal(" "),
-                                Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.2"),
-                                Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.3"),
-                                Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.4"),
-                                Text.literal(" "),
-                                Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.5"),
-                                Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.6"),
-                                Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.7"))
-                    .setAddButtonTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.add_button.hint"))
-                    .setRemoveButtonTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.remove_button.hint"))
-                    .setCreateNewInstance(entry -> new StringListListEntry.StringListCell("_ + _ => _", entry))
-                    .setCellErrorSupplier(entry -> {
-                        if (!ModConfig.isValidTradeEntry(entry)) {
-                            return Optional.of(Text.translatable("modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern"));
-                        }
-                        return Optional.empty();
-                    })
-                    .setSaveConsumer(newList -> {
-                        config.trades = newList.stream()
-                                .filter(ModConfig::isValidTradeEntry)
-                                .toList();
-                        applyConfig(config);
-                    })
-                    .build());
+                .setDefaultValue(List.of(
+                    "pumpkin => emerald",
+                    "melon => emerald"
+                ))
+                .setTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.1"),
+                            Text.literal(" "),
+                            Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.2"),
+                            Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.3"),
+                            Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.4"),
+                            Text.literal(" "),
+                            Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.5"),
+                            Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.6"),
+                            Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.7"))
+                .setAddButtonTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.add_button.hint"))
+                .setRemoveButtonTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.remove_button.hint"))
+                .setCreateNewInstance(entry -> new StringListListEntry.StringListCell("_ + _ => _", entry))
+                .setCellErrorSupplier(entry -> {
+                    if (!ModConfig.isValidTradeEntry(entry)) {
+                        return Optional.of(Text.translatable("modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern"));
+                    }
+                    return Optional.empty();
+                })
+                .setSaveConsumer(newList -> {
+                    config.trades = newList.stream()
+                        .filter(ModConfig::isValidTradeEntry)
+                        .toList();
+                    applyConfig(config);
+                })
+                .build());
 
             // ==================== EFFECTS ====================
             ConfigCategory effects = builder.getOrCreateCategory(Text.translatable("modmenu.autosell.settings.effects.title"));
 
             // highlightingParticles
             effects.addEntry(entryBuilder.startStringDropdownMenu(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.name"), config.highlightingParticlesId)
-                    .setDefaultValue("minecraft:flame")
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.hint"))
-                    .setErrorSupplier(particleName -> {
-                        if (!ModConfig.isValidParticle(particleName)) {
-                            return Optional.of(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name"));
-                        }
-                        return Optional.empty();
-                    })
-                    .setSaveConsumer(newValue -> {
-                        config.highlightingParticlesId = newValue;
-                        applyConfig(config);
-                    })
-                    .setSelections(Utils.getSimpleParticleIds())
-                    .build());
+                .setDefaultValue("minecraft:flame")
+                .setTooltip(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.hint"))
+                .setErrorSupplier(particleName -> {
+                    if (!ModConfig.isValidParticle(particleName)) {
+                        return Optional.of(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name"));
+                    }
+                    return Optional.empty();
+                })
+                .setSaveConsumer(newValue -> {
+                    config.highlightingParticlesId = newValue;
+                    applyConfig(config);
+                })
+                .setSelections(Utils.getSimpleParticleIds())
+                .build());
 
             // particlesPerTick
             effects.addEntry(entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.name"), config.particlesPerTick)
-                    .setDefaultValue(0.5)
-                    .setMin(0.01)
-                    .setMax(21)
-                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.1"),
-                                Text.literal(" "),
-                                Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.2"),
-                                Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.3"))
-                    .setSaveConsumer(newValue -> {
-                        config.particlesPerTick = newValue;
-                        applyConfig(config);
-                    })
-                    .build());
+                .setDefaultValue(0.5)
+                .setMin(0.01)
+                .setMax(21)
+                .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.1"),
+                            Text.literal(" "),
+                            Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.2"),
+                            Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.3"))
+                .setSaveConsumer(newValue -> {
+                    config.particlesPerTick = newValue;
+                    applyConfig(config);
+                })
+                .build());
 
             // Particle Parameters
             effects.addEntry(entryBuilder.startSubCategory(Text.translatable("modmenu.autosell.settings.effects.particles_parameters.title"), List.of(
