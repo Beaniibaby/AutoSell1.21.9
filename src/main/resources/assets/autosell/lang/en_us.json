@@ -44,5 +44,35 @@
 
   "modmenu.autosell.settings.effects.highlighting_particles.name": "Particles Type",
   "modmenu.autosell.settings.effects.highlighting_particles.hint": "What particles to use for villager highlighting",
-  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Invalid particle name!"
+  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Invalid particle name!",
+
+  "modmenu.autosell.settings.effects.particles_per_tick.name": "Particles Per Tick",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.1": "How many particles will be spawned at every tick",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.2": "For example, value = 2 means 2 particles per tick or 40 particles per second.",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.3": "Value = 0.5 means 1 particle every 2 ticks, 0.01 - 1 particle every 100 ticks, etc.",
+
+  "modmenu.autosell.settings.effects.particles_parameters.title": "Particles Parameters",
+
+  "modmenu.autosell.settings.effects.particle_parameters.y_level.name": "Center Height",
+  "modmenu.autosell.settings.effects.particle_parameters.y_level.hint": "Height of the center of particles sphere/cuboid",
+
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.name": "Particles Shape",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.hint": "In what shape will the particles be distributed",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.type.cuboid.name": "CUBOID",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.type.ellipsoid.name": "ELLIPSOID",
+
+  "modmenu.autosell.settings.effects.particle_parameters.radius.x.name": "Radius X",
+  "modmenu.autosell.settings.effects.particle_parameters.radius.y.name": "Radius Y",
+  "modmenu.autosell.settings.effects.particle_parameters.radius.z.name": "Radius Z",
+
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.name": "Use random particle speed",
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.1": "If True, uses speed below as an upper speed bound",
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.2": "If False, uses speed below as an actual fixed speed",
+
+  "modmenu.autosell.settings.effects.particle_parameters.speed.name": "Particles Speed",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.hint": "Controls the speed of the particles",
+
+  "modmenu.autosell.settings.effects.particle_parameters.speed.x.name": "Speed X",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.y.name": "Speed Y",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.z.name": "Speed Z"
 }

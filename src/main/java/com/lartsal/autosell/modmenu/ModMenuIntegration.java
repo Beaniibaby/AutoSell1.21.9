@@ -3,6 +3,7 @@ package com.lartsal.autosell.modmenu;
 import com.lartsal.autosell.Utils;
 import com.lartsal.autosell.config.ConfigManager;
 import com.lartsal.autosell.config.ModConfig;
+import com.lartsal.autosell.config.ModConfig.ParticleDistributionType;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -12,6 +13,7 @@ import me.shedaniel.clothconfig2.gui.entries.StringListListEntry;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static com.lartsal.autosell.AutoSellMod.applyConfig;
@@ -129,6 +131,128 @@ public class ModMenuIntegration implements ModMenuApi {
                     })
                     .setSelections(Utils.getSimpleParticleIds())
                     .build());
+
+            // particlesPerTick
+            effects.addEntry(entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.name"), config.particlesPerTick)
+                    .setDefaultValue(0.5)
+                    .setMin(0.01)
+                    .setMax(21)
+                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.1"),
+                                Text.literal(" "),
+                                Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.2"),
+                                Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.3"))
+                    .setSaveConsumer(newValue -> {
+                        config.particlesPerTick = newValue;
+                        applyConfig(config);
+                    })
+                    .build());
+
+            // Particle Parameters
+            effects.addEntry(entryBuilder.startSubCategory(Text.translatable("modmenu.autosell.settings.effects.particles_parameters.title"), List.of(
+                // yLevel
+                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.y_level.name"), config.yLevel)
+                    .setDefaultValue(1.25)
+                    .setMin(-21.0)
+                    .setMax(21.0)
+                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.y_level.hint"))
+                    .setSaveConsumer(newValue -> {
+                        config.yLevel = newValue;
+                        applyConfig(config);
+                    })
+                    .build(),
+
+                // particlesShape
+                entryBuilder.startEnumSelector(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.particles_shape.name"), ParticleDistributionType.class, config.particlesShape)
+                    .setDefaultValue(ParticleDistributionType.ELLIPSOID)
+                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.particles_shape.hint"))
+                    .setEnumNameProvider(value -> Text.translatable("modmenu.autosell.settings.effects.particle_parameters.particles_shape.type." + value.name().toLowerCase() + ".name"))
+                    .setSaveConsumer(newValue -> {
+                        config.particlesShape = newValue;
+                        applyConfig(config);
+                    })
+                    .build(),
+
+                // radiusX
+                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.x.name"), config.radiusX)
+                        .setDefaultValue(0.0)
+                        .setMin(0.0)
+                        .setMax(21.0)
+                        .setSaveConsumer(newValue -> {
+                            config.radiusX = newValue;
+                            applyConfig(config);
+                        })
+                        .build(),
+                // radiusY
+                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.y.name"), config.radiusY)
+                        .setDefaultValue(0.0)
+                        .setMin(0.0)
+                        .setMax(21.0)
+                        .setSaveConsumer(newValue -> {
+                            config.radiusY = newValue;
+                            applyConfig(config);
+                        })
+                        .build(),
+                // radiusZ
+                entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.radius.z.name"), config.radiusZ)
+                        .setDefaultValue(0.0)
+                        .setMin(0.0)
+                        .setMax(21.0)
+                        .setSaveConsumer(newValue -> {
+                            config.radiusZ = newValue;
+                            applyConfig(config);
+                        })
+                        .build(),
+
+                // randomSpeed
+                entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.random_speed.name"), config.randomSpeed)
+                    .setDefaultValue(true)
+                    .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.1"),
+                                Text.translatable("modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.2"))
+                    .setSaveConsumer(newValue -> {
+                        config.randomSpeed = newValue;
+                        applyConfig(config);
+                    })
+                    .build(),
+
+                // speed
+                entryBuilder.startSubCategory(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.name"), List.of(
+                    // speedX
+                    entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.x.name"), config.speedX)
+                        .setDefaultValue(0.07)
+                        .setMin(-2.1)
+                        .setMax(2.1)
+                        .setSaveConsumer(newValue -> {
+                            config.speedX = newValue;
+                            applyConfig(config);
+                        })
+                        .build(),
+                    // speedY
+                    entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.y.name"), config.speedY)
+                        .setDefaultValue(0.07)
+                        .setMin(-2.1)
+                        .setMax(2.1)
+                        .setSaveConsumer(newValue -> {
+                            config.speedY = newValue;
+                            applyConfig(config);
+                        })
+                        .build(),
+                    // speedZ
+                    entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.z.name"), config.speedZ)
+                        .setDefaultValue(0.07)
+                        .setMin(-2.1)
+                        .setMax(2.1)
+                        .setSaveConsumer(newValue -> {
+                            config.speedZ = newValue;
+                            applyConfig(config);
+                        })
+                        .build()
+                ))
+                .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particle_parameters.speed.hint"))
+                .setExpanded(false)
+                .build()
+            ))
+            .setExpanded(false)
+            .build());
 
             builder.setSavingRunnable(ConfigManager::saveConfig);
             return builder.build();

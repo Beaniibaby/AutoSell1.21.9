@@ -44,5 +44,35 @@
 
   "modmenu.autosell.settings.effects.highlighting_particles.name": "Тип частиц",
   "modmenu.autosell.settings.effects.highlighting_particles.hint": "Какие частицы используются для подсветки жителей",
-  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Некорректное название частицы!"
+  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Некорректное название частицы!",
+
+  "modmenu.autosell.settings.effects.particles_per_tick.name": "Частиц за тик",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.1": "Сколько частиц будет появляться каждый тик",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.2": "Например, при значении = 2 будет появляться 2 частицы каждый тик, т.е. 40 частиц в секунду.",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.3": "При значении = 0.5 - 1 частица каждые два тика, 0.01 - 1 частица каждые 100 тиков, и т.д.",
+
+  "modmenu.autosell.settings.effects.particles_parameters.title": "Настройки частиц",
+
+  "modmenu.autosell.settings.effects.particle_parameters.y_level.name": "Высота центра",
+  "modmenu.autosell.settings.effects.particle_parameters.y_level.hint": "Регулирует высоту центра источника частиц",
+
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.name": "Форма распределения частиц",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.hint": "По какой фигуре будут распределяться частицы",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.type.cuboid.name": "Кубоид",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.type.ellipsoid.name": "Эллипсоид",
+
+  "modmenu.autosell.settings.effects.particle_parameters.radius.x.name": "Радиус X",
+  "modmenu.autosell.settings.effects.particle_parameters.radius.y.name": "Радиус Y",
+  "modmenu.autosell.settings.effects.particle_parameters.radius.z.name": "Радиус Z",
+
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.name": "Использовать случайную скорость",
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.1": "Если Да, то скорость частиц выбирается из диапазона [0, S)",
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.2": "Если Нет, то скорость всегда равна S",
+
+  "modmenu.autosell.settings.effects.particle_parameters.speed.name": "Скорость частиц",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.hint": "Контролирует скорость частиц",
+
+  "modmenu.autosell.settings.effects.particle_parameters.speed.x.name": "Скорость X",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.y.name": "Скорость Y",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.z.name": "Скорость Z"
 }

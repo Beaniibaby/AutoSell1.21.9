@@ -2,6 +2,7 @@ package com.lartsal.autosell;
 
 import com.lartsal.autosell.config.ConfigManager;
 import com.lartsal.autosell.config.ModConfig;
+import com.lartsal.autosell.config.ModConfig.ParticleDistributionType;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -33,6 +34,18 @@ import java.util.regex.Matcher;
 
 public class AutoSellMod implements ClientModInitializer {
     private static final Logger LOGGER = LoggerFactory.getLogger("AutoSellMod");
+
+    private static final Random random = new Random();
+
+    private static class Point3D {
+        double x, y, z;
+
+        Point3D(double x, double y, double z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+    }
 
     private enum WorkMode {
         OFF,
@@ -90,15 +103,24 @@ public class AutoSellMod implements ClientModInitializer {
     private static MerchantEntity lastTradedVillager;
     private static MerchantEntity potentialVillager;
 
+    // General
     private static boolean enabled;
     private static boolean highlightingEnabled;
-    private static SimpleParticleType highlightingParticles;
     private static int tradesDelay;
     private static double acceptablePriceMultiplier;
     private static final List<Trade> trades = new ArrayList<>();
 
+    // Effects
+    private static SimpleParticleType highlightingParticles;
+    private static double particlesPerTick;
+    private static double particlesPerTickAccumulator = 0.0;
+    private static double yLevel;
+    private static ParticleDistributionType particlesShape;
+    private static double radiusX, radiusY, radiusZ;
+    private static boolean randomSpeed;
+    private static double speedX, speedY, speedZ;
+
     private static int tradeProcessCooldown = 0;
-    private static int particleSpawnCooldown = 0;
 
     private static ModConfig config;
 
@@ -109,9 +131,20 @@ public class AutoSellMod implements ClientModInitializer {
 
         enabled = config.isModEnabled;
         highlightingEnabled = config.isVillagerHighlightingEnabled;
-        highlightingParticles = (SimpleParticleType) Registries.PARTICLE_TYPE.get(Identifier.of(config.highlightingParticlesId));
         tradesDelay = config.tradesDelay;
         acceptablePriceMultiplier = config.acceptablePriceMultiplier;
+
+        highlightingParticles = (SimpleParticleType) Registries.PARTICLE_TYPE.get(Identifier.of(config.highlightingParticlesId));
+        particlesPerTick = config.particlesPerTick;
+        yLevel = config.yLevel;
+        particlesShape = config.particlesShape;
+        radiusX = config.radiusX;
+        radiusY = config.radiusY;
+        radiusZ = config.radiusZ;
+        randomSpeed = config.randomSpeed;
+        speedX = config.speedX;
+        speedY = config.speedY;
+        speedZ = config.speedZ;
 
         trades.clear();
 
@@ -181,28 +214,38 @@ public class AutoSellMod implements ClientModInitializer {
                     return;
                 }
 
-                if (particleSpawnCooldown > 0) {
-                    particleSpawnCooldown--;
-                    return;
-                }
-
-                Random random = new Random();
-
                 if (client.world == null) {
                     return;
                 }
 
-                client.world.addParticle(
-                        highlightingParticles,
-                        lastTradedVillager.getX(),
-                        lastTradedVillager.getY() + 1.25,
-                        lastTradedVillager.getZ(),
-                        (random.nextBoolean() ? 1 : -1) * random.nextDouble(0.07),
-                        (random.nextBoolean() ? 1 : -1) * random.nextDouble(0.07),
-                        (random.nextBoolean() ? 1 : -1) * random.nextDouble(0.07)
-                );
+                particlesPerTickAccumulator += particlesPerTick;
+                int particlesToSpawn = (int) particlesPerTickAccumulator;
+                if (particlesToSpawn > 0) {
+                    for (int i = 0; i < particlesToSpawn; i++) {
+                        Point3D p = switch (particlesShape) {
+                            case CUBOID -> getRandomPointOnCuboid(radiusX, radiusY, radiusZ);
+                            case ELLIPSOID -> getRandomPointOnEllipsoid(radiusX, radiusY, radiusZ);
+                        };
+                        double offsetX = p.x;
+                        double offsetY = p.y;
+                        double offsetZ = p.z;
 
-                particleSpawnCooldown = 1;
+                        double finalSpeedX = Utils.getRandomSign() * (randomSpeed ? (speedX <= 0 ? speedX : random.nextDouble(speedX)) : speedX);
+                        double finalSpeedY = Utils.getRandomSign() * (randomSpeed ? (speedY <= 0 ? speedY : random.nextDouble(speedY)) : speedY);
+                        double finalSpeedZ = Utils.getRandomSign() * (randomSpeed ? (speedZ <= 0 ? speedZ : random.nextDouble(speedZ)) : speedZ);
+
+                        client.world.addParticle(
+                                highlightingParticles,                          // minecraft:witch
+                                lastTradedVillager.getX() + offsetX,            // 0
+                                lastTradedVillager.getY() + offsetY + yLevel,   // 1.25
+                                lastTradedVillager.getZ() + offsetZ,            // 0
+                                finalSpeedX,                                    // 0.07
+                                finalSpeedY,                                    // 0.07
+                                finalSpeedZ                                     // 0.07
+                        );
+                    }
+                    particlesPerTickAccumulator -= particlesToSpawn;
+                }
             }
         });
     }
@@ -419,5 +462,46 @@ public class AutoSellMod implements ClientModInitializer {
 
     private void setLastTradedVillager(MerchantEntity villager) {
         lastTradedVillager = villager;
+    }
+
+    private Point3D getRandomPointOnCuboid(double radiusX, double radiusY, double radiusZ) {
+        double Sx = 2 * radiusY * radiusZ;
+        double Sy = 2 * radiusX * radiusZ;
+        double Sz = 2 * radiusX * radiusY;
+        double Stotal = Sx + Sy + Sz;
+
+        double u = random.nextDouble(Stotal);
+
+        double x, y, z;
+
+        if (u <= Sx) {
+            x = Utils.getRandomSign() * radiusX;
+            y = Utils.getRandomSign() * random.nextDouble(radiusY);
+            z = Utils.getRandomSign() * random.nextDouble(radiusZ);
+        } else if (u <= Sx + Sy) {
+            x = Utils.getRandomSign() * random.nextDouble(radiusX);
+            y = Utils.getRandomSign() * radiusY;
+            z = Utils.getRandomSign() * random.nextDouble(radiusZ);
+        } else {
+            x = Utils.getRandomSign() * random.nextDouble(radiusX);
+            y = Utils.getRandomSign() * random.nextDouble(radiusY);
+            z = Utils.getRandomSign() * radiusZ;
+        }
+
+        return new Point3D(x, y, z);
+    }
+
+    private Point3D getRandomPointOnEllipsoid(double radiusX, double radiusY, double radiusZ) {
+        double u1 = random.nextDouble();
+        double u2 = random.nextDouble();
+
+        double phi = 2 * Math.PI * u1;
+        double theta = Math.acos(2 * u2 - 1);
+
+        double x = radiusX * Math.sin(theta) * Math.cos(phi);
+        double y = radiusY * Math.sin(theta) * Math.sin(phi);
+        double z = radiusZ * Math.cos(theta);
+
+        return new Point3D(x, y, z);
     }
 }
