@@ -20,10 +20,10 @@ public class ModConfig {
     public boolean isVillagerHighlightingEnabled = true;
     public int tradesDelay = 1;     // In ticks
     public double acceptablePriceMultiplier = 1.5;
-    public List<String> trades = new ArrayList<>(List.of(
+    public List<String> trades = List.of(
             "pumpkin => emerald",
             "melon => emerald"
-    ));
+    );
 
     public String highlightingParticlesId = "minecraft:flame";
     public double particlesPerTick = 1;
