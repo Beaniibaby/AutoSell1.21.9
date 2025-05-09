@@ -34,7 +34,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // isModEnabled
             general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.general.enabled.name"), config.isModEnabled)
-                    .setDefaultValue(config.isModEnabled)
+                    .setDefaultValue(true)
                     .setTooltip(Text.translatable("modmenu.autosell.settings.general.enabled.hint"))
                     .setSaveConsumer(newValue -> {
                         config.isModEnabled = newValue;
@@ -44,7 +44,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // isVillagerHighlightEnabled
             general.addEntry(entryBuilder.startBooleanToggle(Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.name"), config.isVillagerHighlightingEnabled)
-                    .setDefaultValue(config.isVillagerHighlightingEnabled)
+                    .setDefaultValue(true)
                     .setTooltip(Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.hint.1"),
                                 Text.literal(" "),
                                 Text.translatable("modmenu.autosell.settings.general.highlight_last_villager.hint.2"))
@@ -56,7 +56,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // operationsDelay
             general.addEntry(entryBuilder.startIntField(Text.translatable("modmenu.autosell.settings.general.trades_delay.name"), config.tradesDelay)
-                    .setDefaultValue(config.tradesDelay)
+                    .setDefaultValue(1)
                     .setMin(0)
                     .setMax(210)
                     .setTooltip(Text.translatable("modmenu.autosell.settings.general.trades_delay.hint.1"),
@@ -70,7 +70,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // acceptablePriceMultiplier
             general.addEntry(entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.name"), config.acceptablePriceMultiplier)
-                    .setDefaultValue(config.acceptablePriceMultiplier)
+                    .setDefaultValue(1.5)
                     .setMin(1.0)
                     .setMax(210.0)
                     .setTooltip(Text.translatable("modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1"),
@@ -85,7 +85,10 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // trades
             general.addEntry(entryBuilder.startStrList(Text.translatable("modmenu.autosell.settings.general.processed_trades.name"), config.trades)
-                    .setDefaultValue(new ArrayList<>(config.trades))
+                    .setDefaultValue(List.of(
+                            "pumpkin => emerald",
+                            "melon => emerald"
+                    ))
                     .setTooltip(Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.1"),
                                 Text.literal(" "),
                                 Text.translatable("modmenu.autosell.settings.general.processed_trades.hint.2"),
