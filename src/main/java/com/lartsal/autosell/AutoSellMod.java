@@ -10,7 +10,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.MerchantScreen;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.entity.passive.VillagerEntity;
+import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -86,9 +86,8 @@ public class AutoSellMod implements ClientModInitializer {
     private static KeyBinding switchModeKey;
     private static KeyBinding toggleHighlightKey;
 
-    //private static UUID lastTradedVillagerUUID;
-    private static VillagerEntity lastTradedVillager;
-    private static VillagerEntity potentialVillager;
+    private static MerchantEntity lastTradedVillager;
+    private static MerchantEntity potentialVillager;
 
     private static boolean enabled;
     private static boolean highlightingEnabled;
@@ -166,7 +165,7 @@ public class AutoSellMod implements ClientModInitializer {
         UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
             if (!world.isClient) return ActionResult.PASS;
 
-            if (entity instanceof VillagerEntity villager) {
+            if (entity instanceof MerchantEntity villager) {
                 potentialVillager = villager;
             }
 
@@ -415,8 +414,7 @@ public class AutoSellMod implements ClientModInitializer {
         );
     }
 
-    private void setLastTradedVillager(VillagerEntity villager) {
+    private void setLastTradedVillager(MerchantEntity villager) {
         lastTradedVillager = villager;
-        //lastTradedVillagerUUID = villager == null ? null : villager.getUuid();
     }
 }
