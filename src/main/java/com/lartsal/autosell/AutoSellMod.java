@@ -3,6 +3,7 @@ package com.lartsal.autosell;
 import com.lartsal.autosell.config.ConfigManager;
 import com.lartsal.autosell.config.ModConfig;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
@@ -140,8 +141,10 @@ public class AutoSellMod implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ConfigManager.loadConfig();
-        applyConfig(ConfigManager.getConfig());
+        ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
+            ConfigManager.loadConfig();
+            applyConfig(ConfigManager.getConfig());
+        });
 
         // Registering keybindings
         switchModeKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
