@@ -117,7 +117,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
             // highlightingParticles
             effects.addEntry(entryBuilder.startStringDropdownMenu(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.name"), config.highlightingParticlesId)
-                    .setDefaultValue("minecraft:witch")
+                    .setDefaultValue("minecraft:flame")
                     .setTooltip(Text.translatable("modmenu.autosell.settings.effects.highlighting_particles.hint"))
                     .setErrorSupplier(particleName -> {
                         if (!ModConfig.isValidParticle(particleName)) {

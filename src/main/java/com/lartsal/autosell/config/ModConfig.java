@@ -25,7 +25,7 @@ public class ModConfig {
             "melon => emerald"
     ));
 
-    public String highlightingParticlesId = "minecraft:witch";
+    public String highlightingParticlesId = "minecraft:flame";
     public double particlesPerTick = 1;
     public double yLevel = 1.25;
     public ParticleDistributionType particlesShape = ParticleDistributionType.ELLIPSOID;
