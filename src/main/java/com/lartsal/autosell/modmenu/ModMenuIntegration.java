@@ -138,7 +138,7 @@ public class ModMenuIntegration implements ModMenuApi {
             effects.addEntry(entryBuilder.startDoubleField(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.name"), config.particlesPerTick)
                 .setDefaultValue(0.5)
                 .setMin(0.01)
-                .setMax(21)
+                .setMax(210)
                 .setTooltip(Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.1"),
                             Text.literal(" "),
                             Text.translatable("modmenu.autosell.settings.effects.particles_per_tick.hint.2"),
