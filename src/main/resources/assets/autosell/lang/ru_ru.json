@@ -69,9 +69,6 @@
   "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.1": "Если Да, то скорость частиц выбирается из диапазона [0, S)",
   "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.2": "Если Нет, то скорость всегда равна S",
 
-  "modmenu.autosell.settings.effects.particle_parameters.speed.name": "Скорость частиц",
-  "modmenu.autosell.settings.effects.particle_parameters.speed.hint": "Контролирует скорость частиц",
-
   "modmenu.autosell.settings.effects.particle_parameters.speed.x.name": "Скорость X",
   "modmenu.autosell.settings.effects.particle_parameters.speed.y.name": "Скорость Y",
   "modmenu.autosell.settings.effects.particle_parameters.speed.z.name": "Скорость Z"

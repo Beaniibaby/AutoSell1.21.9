@@ -69,9 +69,6 @@
   "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.1": "If True, uses speed below as an upper speed bound",
   "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.2": "If False, uses speed below as an actual fixed speed",
 
-  "modmenu.autosell.settings.effects.particle_parameters.speed.name": "Particles Speed",
-  "modmenu.autosell.settings.effects.particle_parameters.speed.hint": "Controls the speed of the particles",
-
   "modmenu.autosell.settings.effects.particle_parameters.speed.x.name": "Speed X",
   "modmenu.autosell.settings.effects.particle_parameters.speed.y.name": "Speed Y",
   "modmenu.autosell.settings.effects.particle_parameters.speed.z.name": "Speed Z"
