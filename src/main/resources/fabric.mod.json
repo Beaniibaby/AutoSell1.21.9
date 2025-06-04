@@ -22,7 +22,12 @@
   },
 
   "depends": {
-    "minecraft": "1.21.4",
-    "modmenu": ">=13.0.0"
+    "minecraft": "~${minecraft_version}",
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "modmenu": ">=${modmenu_version}"
+  },
+  "suggests": {
+    "cloth-config": ">=${cloth_config_version}"
   }
 }
