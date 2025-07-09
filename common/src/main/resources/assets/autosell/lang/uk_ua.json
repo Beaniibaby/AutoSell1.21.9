@@ -1,0 +1,48 @@
+{
+  "modmenu.descriptionTranslation.autosell": "Мод для автоматичного продажу предметів селянам.",
+
+  "key.category.autosell.main": "AutoSell",
+  "key.autosell.mode_switch": "Перемкнути режим роботи AutoSell",
+  "key.autosell.toggle_highlighting": "Перемкнути підсвітку селян",
+
+  "modmenu.autosell.settings.title": "Налаштування AutoSell",
+
+
+  "modmenu.autosell.settings.general.title": "Основні",
+
+  "modmenu.autosell.settings.general.enabled.name": "Ввімкнений",
+  "modmenu.autosell.settings.general.enabled.hint": "Вмикає і вимикає мод",
+
+  "modmenu.autosell.settings.general.highlight_last_villager.name": "Підсвічувати останнього селянина",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.1": "Останній оброблений модом селянин буде випускати частинки",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.2": "Корисно при масовій продажі, щоб не забути, на кому ви зупинилися.",
+
+  "modmenu.autosell.settings.general.trades_process_delay.name": "Затримка операцій",
+  "modmenu.autosell.settings.general.trades_process_delay.hint.1": "Затримка між операціями в моді (у тіках, від §60§r до §6210§r)",
+  "modmenu.autosell.settings.general.trades_process_delay.hint.2": "Збільшення затримки може допомогти при фантомних угодах або кіках за спам.",
+
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.name": "Множник прийнятних цін",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1": "У скільки разів може підвищитись ціна, щоб вона все ще вважалась прийнятною (для режиму §aON§r, §eACCEPTABLE PRICES§r)",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.2": "Наприклад, §61.5 = 150%§r. Значить, якщо ціна була §64§r смарагда, то §64 * 1.5 = 6§r смарагдів - максимальна прийнятна ціна.",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.3": "Помножувач так само може бути менше §61§r. Наприклад, якщо ви захочете купувати предмети лише по знижках.",
+
+  "modmenu.autosell.settings.general.processed_trades.name": "Оброблювані угоди",
+  "modmenu.autosell.settings.general.processed_trades.hint.1": "Угоди, котрі мод спробує обробити",
+  "modmenu.autosell.settings.general.processed_trades.hint.2": "Приклади формату запису:",
+  "modmenu.autosell.settings.general.processed_trades.hint.3": "    some_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.4": "    first_item + second_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.5": "Назви предметів повинні бути внутрішньоігровими ідентифікаторами, наприклад §a\"pumpkin\"§r, §a\"minecraft:emerald\"§r або §a\"end_stone_brick_stairs\"§r.",
+  "modmenu.autosell.settings.general.processed_trades.hint.6": "Назви предметів не повинні містити пробілів ( ), але можуть містити цифри (§60-9§r).",
+  "modmenu.autosell.settings.general.processed_trades.hint.7": "Назви предметів можуть бути написані з явною вказівкою простору імен, по типу §a\"minecraft:something\"§r.",
+
+  "modmenu.autosell.settings.general.processed_trades.add_button.hint": "Додати запис",
+  "modmenu.autosell.settings.general.processed_trades.remove_button.hint": "Видалити запис",
+  "modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern": "Некоректний формат запису!",
+
+
+  "modmenu.autosell.settings.effects.title": "Ефекти",
+
+  "modmenu.autosell.settings.effects.highlighting_particles.name": "Тип частинок",
+  "modmenu.autosell.settings.effects.highlighting_particles.hint": "Які частинки використовуються для підсвічування селян",
+  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Некоректна назва частинки!"
+}
