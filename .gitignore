@@ -1,7 +1,6 @@
 ### Development environment ###
 fabric/runs/
-forge/runs/
-neoforge/run/
+
 
 .idea/
 
