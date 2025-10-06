@@ -1,0 +1,75 @@
+{
+  "modmenu.descriptionTranslation.autosell": "Мод для автоматической продажи предметов жителям.",
+
+  "key.category.autosell.main": "AutoSell",
+  "key.autosell.mode_switch": "Переключить режим работы AutoSell",
+  "key.autosell.toggle_highlighting": "Переключить подсветку жителей",
+
+  "modmenu.autosell.settings.title": "Настройки AutoSell",
+
+
+  "modmenu.autosell.settings.general.title": "Основные",
+
+  "modmenu.autosell.settings.general.enabled.name": "Включён",
+  "modmenu.autosell.settings.general.enabled.hint": "Включает и отключает мод",
+
+  "modmenu.autosell.settings.general.highlight_last_villager.name": "Подсвечивать последнего жителя",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.1": "Последний обработанный модом житель будет испускать частицы",
+  "modmenu.autosell.settings.general.highlight_last_villager.hint.2": "Полезно при массовой продаже, чтобы не забыть, на ком вы остановились.",
+
+  "modmenu.autosell.settings.general.trades_process_delay.name": "Задержка операций",
+  "modmenu.autosell.settings.general.trades_process_delay.hint.1": "Задержки между операциями в моде (в тиках, от §60§r до §6210§r)",
+  "modmenu.autosell.settings.general.trades_process_delay.hint.2": "Увеличение задержки может помочь при фантомных сделках или киках за спам.",
+
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.name": "Множитель допустимых цен",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.1": "Во сколько раз может увеличиться цена, чтобы она всё ещё считалась допустимой (для режима §aON§r, §eACCEPTABLE PRICES§r)",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.2": "Например, §61.5 = 150%§r. Значит если цена была §64§r изумруда , то §64 * 1.5 = 6§r изумрудов - максимальная допустимая цена.",
+  "modmenu.autosell.settings.general.acceptable_price_multiplier.hint.3": "Множитель так же может быть меньше §61§r. Например, если вы захотите покупать предметы только по скидкам.",
+
+  "modmenu.autosell.settings.general.processed_trades.name": "Обрабатываемые сделки",
+  "modmenu.autosell.settings.general.processed_trades.hint.1": "Сделки, которые мод попытается произвести",
+  "modmenu.autosell.settings.general.processed_trades.hint.2": "Примеры формата записей:",
+  "modmenu.autosell.settings.general.processed_trades.hint.3": "    some_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.4": "    first_item + second_item => result_item",
+  "modmenu.autosell.settings.general.processed_trades.hint.5": "Названия предметов должны быть внутреигровыми идентификаторами, например §a\"pumpkin\"§r, §a\"minecraft:emerald\"§r или §a\"end_stone_brick_stairs\"§r.",
+  "modmenu.autosell.settings.general.processed_trades.hint.6": "Названия предметов не могут содержать пробелов ( ), но могут содержать цифры (§60-9§r).",
+  "modmenu.autosell.settings.general.processed_trades.hint.7": "Названия предметов могут быть написаны с явным указанием пространства имён, по типу §a\"minecraft:something\"§r.",
+
+  "modmenu.autosell.settings.general.processed_trades.add_button.hint": "Добавить запись",
+  "modmenu.autosell.settings.general.processed_trades.remove_button.hint": "Удалить запись",
+  "modmenu.autosell.settings.general.processed_trades.error.invalid_entry_pattern": "Некорректный формат записи!",
+
+
+  "modmenu.autosell.settings.effects.title": "Эффекты",
+
+  "modmenu.autosell.settings.effects.highlighting_particles.name": "Тип частиц",
+  "modmenu.autosell.settings.effects.highlighting_particles.hint": "Какие частицы используются для подсветки жителей",
+  "modmenu.autosell.settings.effects.highlighting_particles.error.invalid_particle_name": "Некорректное название частицы!",
+
+  "modmenu.autosell.settings.effects.particles_per_tick.name": "Частиц за тик",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.1": "Сколько частиц будет появляться каждый тик",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.2": "Например, при значении = 2 будет появляться 2 частицы каждый тик, т.е. 40 частиц в секунду.",
+  "modmenu.autosell.settings.effects.particles_per_tick.hint.3": "При значении = 0.5 - 1 частица каждые два тика, 0.01 - 1 частица каждые 100 тиков, и т.д.",
+
+  "modmenu.autosell.settings.effects.particles_parameters.title": "Настройки частиц",
+
+  "modmenu.autosell.settings.effects.particle_parameters.y_level.name": "Высота центра",
+  "modmenu.autosell.settings.effects.particle_parameters.y_level.hint": "Регулирует высоту центра источника частиц",
+
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.name": "Форма распределения частиц",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.hint": "По какой фигуре будут распределяться частицы",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.type.cuboid.name": "Кубоид",
+  "modmenu.autosell.settings.effects.particle_parameters.particles_shape.type.ellipsoid.name": "Эллипсоид",
+
+  "modmenu.autosell.settings.effects.particle_parameters.radius.x.name": "Радиус X",
+  "modmenu.autosell.settings.effects.particle_parameters.radius.y.name": "Радиус Y",
+  "modmenu.autosell.settings.effects.particle_parameters.radius.z.name": "Радиус Z",
+
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.name": "Использовать случайную скорость",
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.1": "Если Да, то скорость частиц выбирается из диапазона [0, S)",
+  "modmenu.autosell.settings.effects.particle_parameters.random_speed.hint.2": "Если Нет, то скорость всегда равна S",
+
+  "modmenu.autosell.settings.effects.particle_parameters.speed.x.name": "Скорость X",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.y.name": "Скорость Y",
+  "modmenu.autosell.settings.effects.particle_parameters.speed.z.name": "Скорость Z"
+}
